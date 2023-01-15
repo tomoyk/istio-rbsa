@@ -1,0 +1,32 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: front-end-lua
+  namespace: sock-shop
+spec:
+  workloadSelector:
+    labels:
+      name: front-end
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_INBOUND
+        listener:
+          portNumber: 8079
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+              subFilter:
+                name: "envoy.filters.http.router"
+      patch:
+        operation: INSERT_BEFORE
+        value:
+         name: envoy.filters.http.lua
+         typed_config:
+           "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
+           inlineCode: |
+             function envoy_on_request(request_handle)
+               request_handle:logCritical("Hello World 2")
+               local body_length = request_handle:body():length()
+               request_handle:logCritical("Body Length:"..body_length)
+             end
