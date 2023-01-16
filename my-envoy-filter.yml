@@ -26,12 +26,10 @@ spec:
            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
            inlineCode: |
              function envoy_on_request(request_handle)
-               request_handle:logCritical("Hello World 5")
-               local index = 0
-               for chunk in request_handle:bodyChunks() do
-                 local len = chunk:length()
-                 local result = chunk:getBytes(index, len)
-                 index = index + len
-                 request_handle:logCritical("Body:"..result)
+               request_handle:logCritical("Hello World 12")
+               local body_obj = request_handle:body()
+               if body_obj ~= nil then
+                 local body_bytes = body_obj:getBytes(0, body_obj:length())
+                 request_handle:logCritical("Body:"..body_bytes)
                end
              end
