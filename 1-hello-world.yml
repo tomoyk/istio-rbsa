@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: front-end-lua
+  name: hellow-world
   namespace: sock-shop
 spec:
   workloadSelector:
