@@ -21,3 +21,12 @@ task_deploy() {
 task_apply() {
 	task_deploy
 }
+
+task_gen() {
+	basedir=custom-istio
+	istioctl kube-inject \
+	--injectConfigFile $basedir/inject-config.yml \
+	--meshConfigFile $basedir/mesh-config.yml \
+	--valuesFile $basedir/inject-values.yml \
+	--filename sock-shop/complete-demo.yml > sock-shop/complete-demo-custom.yml
+}
