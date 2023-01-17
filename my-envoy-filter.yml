@@ -25,11 +25,15 @@ spec:
          typed_config:
            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
            inlineCode: |
+             JSON = (loadfile "/var/lib/lua/JSON.lua")()
              function envoy_on_request(request_handle)
-               request_handle:logCritical("Hello World 12")
+               request_handle:logCritical("Hello World 14")
                local body_obj = request_handle:body()
                if body_obj ~= nil then
                  local body_bytes = body_obj:getBytes(0, body_obj:length())
                  request_handle:logCritical("Body:"..body_bytes)
+                 local raw_json_text = tostring(body_bytes)
+                 -- local lua_value = JSON:decode(raw_json_text)
+                 -- request_handle:logCritical("Body:"..tostring(lua_value["id"]))
                end
              end
