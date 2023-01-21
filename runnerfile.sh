@@ -11,15 +11,11 @@ task_logs() {
 	task_log
 }
 
-task_deploy() {
+task_deploy-filter() {
 	kubectl delete -f my-envoy-filter.yml
 	kubectl apply -f my-envoy-filter.yml
 	kubectl get pod
 	kubectl get envoyfilter
-}
-
-task_apply() {
-	task_deploy
 }
 
 task_gen() {
@@ -29,4 +25,12 @@ task_gen() {
 	--meshConfigFile $basedir/mesh-config.yml \
 	--valuesFile $basedir/inject-values.yml \
 	--filename sock-shop/complete-demo.yml > sock-shop/complete-demo-custom.yml
+
+	env/bin/python istio-customizer.py
+}
+
+task_deploy() {
+	kubectl create namespace sock-shop
+	kubectl label namespace sock-shop istio-injection=enabled
+	kubectl apply -f sock-shop/complete-demo-custom2.yml
 }
