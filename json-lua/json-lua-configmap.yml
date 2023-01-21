@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   annotations:
   name: lua-libs
-  namespace: istio-system
+  namespace: sock-shop
 data:
   JSON.lua: "-- -*- coding: utf-8 -*-\n--\n-- Simple JSON encoding and decoding in
     pure Lua.\n--\n-- Copyright 2010-2017 Jeffrey Friedl\n-- http://regex.info/blog/\n--
