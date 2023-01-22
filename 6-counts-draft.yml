@@ -1,0 +1,59 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: counts-draft
+  namespace: sock-shop
+spec:
+  workloadSelector:
+    labels:
+      name: front-end
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_INBOUND
+        listener:
+          portNumber: 8079
+          filterChain:
+            filter:
+              name: "envoy.filters.network.http_connection_manager"
+              subFilter:
+                name: "envoy.filters.http.router"
+      patch:
+        operation: INSERT_BEFORE
+        value:
+         name: envoy.filters.http.lua
+         typed_config:
+           "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
+           inlineCode: |
+             JSON = (loadfile "/var/lib/lua/JSON.lua")()
+             aggre = {}
+             function element_counts(request_handle, request_body, depth)
+               request_handle:logCritical("invoke; depth="..tostring(depth))
+               local counter = 0
+               for k,v in pairs(request_body) do
+                 if type(v) == "table" then
+                   element_counts(v, depth+1)
+                 else
+                   counter = counter + 1
+                 end
+               end
+               if aggre[depth] == nil then
+                 aggre[depth] = counter
+               else
+                 aggre[depth] = counter + aggre[depth]
+               end
+             end
+             function envoy_on_request(request_handle)
+               request_handle:logCritical("Hello World 23")
+               local body_obj = request_handle:body()
+               if body_obj ~= nil then
+                 local body_bytes = body_obj:getBytes(0, body_obj:length())
+                 request_handle:logCritical("Body:"..body_bytes)
+                 local raw_json_text = tostring(body_bytes)
+                 local body_json = JSON:decode(raw_json_text)
+                 element_counts(request_handle, body_json, 0)
+                 for k,v in pairs(aggre) do
+                   request_handle:logCritical("depth="..tostring(k).." counts="..tostring(v))
+                 end
+               end
+             end
