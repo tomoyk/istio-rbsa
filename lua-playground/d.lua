@@ -8,14 +8,17 @@ function element_counts(request_body, depth)
   for k,v in pairs(request_body) do
     if type(v) == "table" then
       print("dive")
+      element_counts(v, depth+1)
+    else
+      counter = counter + 1
     end
-    counter = counter + 1
   end
   -- print(counter)
-  table.insert(aggre, counter)
-  return counter
+  aggre[depth] = counter
 end
 
-r = element_counts(h2, 0)
-print(r)
-print(aggre)
+element_counts(h, 1)
+
+for k,v in pairs(aggre) do
+  print("depth=", k, "counts=", v)
+end
