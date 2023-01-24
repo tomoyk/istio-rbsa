@@ -1,3 +1,11 @@
+task_setup() {
+	kubectl create namespace sock-shop
+	kubectl label namespace sock-shop istio-injection=enabled
+	kubectl apply -f json-lua/json-lua-configmap.yml
+	kubectl apply -f sock-shop/istio-gw.yml
+	kubectl apply -f sock-shop/complete-demo-custom2.yml
+}
+
 task_default() {
 	task_deploy
 }
