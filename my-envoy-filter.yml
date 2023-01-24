@@ -4,9 +4,9 @@ metadata:
   name: front-end-lua
   namespace: sock-shop
 spec:
-  workloadSelector:
-    labels:
-      name: front-end
+  # workloadSelector:
+  #   labels:
+  #     name: front-end
   configPatches:
     - applyTo: HTTP_FILTER
       match:
@@ -45,14 +45,16 @@ spec:
              end
              function envoy_on_request(request_handle)
                local body_obj = request_handle:body()
+               local log_suffix = ""
                if body_obj ~= nil then
                  local body_bytes = body_obj:getBytes(0, body_obj:length())
                  request_handle:logCritical("Body:"..body_bytes)
                  local raw_json_text = tostring(body_bytes)
                  local body_json = JSON:decode(raw_json_text)
                  element_counts(request_handle, body_json, 1)
-                 local log_suffix = table.concat(aggre, ", ")
+                 log_suffix = table.concat(aggre, ", ")
                  request_handle:logCritical(log_suffix)
                  aggre = {}
                end
+               request_handle:headers():add("log-suffix", log_suffix)
              end
