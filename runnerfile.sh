@@ -31,9 +31,7 @@ task_logs() {
 }
 
 task_deploy() {
-	kubectl delete -f my-envoy-filter.yml
 	kubectl apply -f my-envoy-filter.yml
-	kubectl get pod
 	kubectl get envoyfilter
 }
 
@@ -48,8 +46,3 @@ task_gen() {
 	env/bin/python istio-customizer.py
 }
 
-task_deploy2() {
-	kubectl create namespace sock-shop
-	kubectl label namespace sock-shop istio-injection=enabled
-	kubectl apply -f sock-shop/complete-demo-custom2.yml
-}
