@@ -7,6 +7,11 @@ task_log() {
 	kubectl logs $pod_name -n sock-shop -c istio-proxy | grep lua
 }
 
+task_log2() {
+	pod_name=$(kubectl get pod -n sock-shop | grep front-end | awk '{print $1}')
+	kubectl logs $pod_name -n sock-shop -c istio-proxy -f | grep -v lua
+}
+
 task_tail() {
 	pod_name=$(kubectl get pod -n sock-shop | grep front-end | awk '{print $1}')
 	kubectl logs $pod_name -n sock-shop -c istio-proxy -f | grep lua
