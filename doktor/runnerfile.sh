@@ -5,3 +5,9 @@ task_deploy() {
 	./configmap-deploy.sh
 	./filter-deploy.sh
 }
+
+task_log() {
+	pod=$(kubectl get pod -n paper | grep app | awk '{print $1}')
+	kubectl logs $pod -n paper -c istio-proxy 
+}
+
