@@ -45,18 +45,21 @@ spec:
                end
              end
              function envoy_on_response(response_handle)
-               response_handle:logWarn("Start envoy_on_response 1")
+               response_handle:logWarn("Start envoy_on_response 2")
                local body_obj = response_handle:body()
                local log_suffix = ""
-               if body_obj ~= nil then
-                 local body_bytes = body_obj:getBytes(0, body_obj:length())
-                 response_handle:logWarn("Body:"..body_bytes)
-                 local raw_json_text = tostring(body_bytes)
-                 local body_json = JSON:decode(raw_json_text)
-                 element_counts(response_handle, body_json, 1)
-                 log_suffix = table.concat(aggre, ", ")
-                 response_handle:logWarn(log_suffix)
-                 aggre = {}
+               local content_type = response_handle:headers():get("content-type")
+               if content_type:find("application/json") ~= nil then
+                 if body_obj ~= nil then
+                   local body_bytes = body_obj:getBytes(0, body_obj:length())
+                   response_handle:logWarn("Body:"..body_bytes)
+                   local raw_json_text = tostring(body_bytes)
+                   local body_json = JSON:decode(raw_json_text)
+                   element_counts(response_handle, body_json, 1)
+                   log_suffix = table.concat(aggre, ", ")
+                   response_handle:logWarn(log_suffix)
+                   aggre = {}
+                 end
                end
                response_handle:headers():add("log-suffix", log_suffix)
              end
