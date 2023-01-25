@@ -1,12 +1,13 @@
 import yaml
-
+import os
 # import json
 
 # pip install pyyaml
 
 
 def main():
-    with open("sock-shop/complete-demo-custom.yml") as f:
+    input_file = os.getenv("INPUT", "sock-shop/complete-demo-custom.yml")
+    with open(input_file) as f:
         body = yaml.safe_load_all(f)
         buffer = []
         for b in body:
@@ -25,7 +26,7 @@ def main():
                 # print(json.dumps(mounts, indent=2))
             buffer.append(b)
 
-        with open("sock-shop/complete-demo-custom2.yml", mode="w") as fo:
+        with open(input_file.replace(".yml", "2.yml"), mode="w") as fo:
             yaml.safe_dump_all(buffer, fo)
 
 

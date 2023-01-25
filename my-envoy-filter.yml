@@ -28,7 +28,7 @@ spec:
              JSON = (loadfile "/var/lib/lua/JSON.lua")()
              aggre = {}
              function element_counts(response_handle, response_body, depth)
-               response_handle:logInfo("invoke; depth="..tostring(depth))
+               -- response_handle:logWarn("invoke; depth="..tostring(depth))
                local counter = 0
                for k,v in pairs(response_body) do
                  if type(v) == "table" then
@@ -45,17 +45,17 @@ spec:
                end
              end
              function envoy_on_response(response_handle)
-               response_handle:logInfo("Start envoy_on_response 1")
+               response_handle:logWarn("Start envoy_on_response 1")
                local body_obj = response_handle:body()
                local log_suffix = ""
                if body_obj ~= nil then
                  local body_bytes = body_obj:getBytes(0, body_obj:length())
-                 response_handle:logInfo("Body:"..body_bytes)
+                 response_handle:logWarn("Body:"..body_bytes)
                  local raw_json_text = tostring(body_bytes)
                  local body_json = JSON:decode(raw_json_text)
                  element_counts(response_handle, body_json, 1)
                  log_suffix = table.concat(aggre, ", ")
-                 response_handle:logInfo(log_suffix)
+                 response_handle:logWarn(log_suffix)
                  aggre = {}
                end
                response_handle:headers():add("log-suffix", log_suffix)
