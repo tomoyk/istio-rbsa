@@ -33,7 +33,14 @@ task_collect() {
 	mkdir logs-$timestamp
 	for l in $list
 	do
+		echo "collect from $l"
 		pod=$(kubectl get pod -n $l | grep app | awk '{print $1}')
-		kubectl logs $pod -n $l > logs-$timestamp/${timestamp}_${l}.log
+		kubectl logs $pod -c istio-proxy -n $l > logs-$timestamp/${timestamp}_${l}.log
 	done
+}
+
+task_load() {
+	cd load-access
+	./loader.sh
+	cd ..
 }
