@@ -26,3 +26,14 @@ task_reset() {
 		kubectl delete pod $pod -n $l
 	done
 }
+
+task_collect() {
+	timestamp=$(date "+%Y-%m-%d-%H-%M-%S")
+	list="front paper author fulltext thumbnail stats"
+	mkdir logs-$timestamp
+	for l in $list
+	do
+		pod=$(kubectl get pod -n $l | grep app | awk '{print $1}')
+		kubectl logs $pod -n $l > logs-$timestamp/${timestamp}_${l}.log
+	done
+}
