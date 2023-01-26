@@ -9,11 +9,11 @@ task_deploy() {
 task_log-p() {
 	pod=$(kubectl get pod -n paper | grep app | awk '{print $1}')
 	echo $pod
-	kubectl logs $pod -n paper -c istio-proxy | tail
+	kubectl logs $pod -n paper -c istio-proxy | grep "\[2023" | tee p.log
 }
 
 task_log-f() {
 	pod=$(kubectl get pod -n front | grep app | awk '{print $1}')
 	echo $pod
-	kubectl logs $pod -n front -c istio-proxy | tail
+	kubectl logs $pod -n front -c istio-proxy | grep "\[2023" | tee f.log
 }
