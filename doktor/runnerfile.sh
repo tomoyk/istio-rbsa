@@ -17,3 +17,12 @@ task_log-f() {
 	echo $pod
 	kubectl logs $pod -n front -c istio-proxy | grep "\[2023" | tee f.log
 }
+
+task_reset() {
+	list="front paper author fulltext thumbnail stats"
+	for l in $list
+	do
+		pod=$(kubectl get pod -n $l | grep app | awk '{print $1}')
+		kubectl delete pod $pod -n $l
+	done
+}

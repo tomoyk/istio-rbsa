@@ -1,3 +1,3 @@
 # generate url-patterns
 
-awk '{print $7}' < raw-front-logs.csv > url-patterns.txt
+awk '{print $6" "$7}' < raw-front-logs.csv | cut -c3- > url-patterns.txt
