@@ -1,11 +1,11 @@
 #!/bin/bash -xe
 
-while read line < url-patterns.txt
+cat url-patterns.txt | while read line
 do
 	# echo $line
 	method=$(echo $line | awk '{print $1}')
 	path=$(echo $line | awk '{print $2}')
-	echo "http://localhost${path}"
-	curl -s -X $method "http://localhost${path}" -o /dev/null
+	echo -n -e "${method}\thttp://localhost${path}\t"
+	curl -I -s -X $method "http://localhost${path}" | head -n 1 | cut -d' ' -f2-
 	sleep 0.1
 done
