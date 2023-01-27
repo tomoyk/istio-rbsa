@@ -25,15 +25,36 @@ spec:
          typed_config:
            "@type": "type.googleapis.com/envoy.extensions.filters.http.lua.v3.Lua"
            inlineCode: |
+             JSON = (loadfile "/var/lib/lua/JSON.lua")()
+             aggre = {}
+             function element_counts(response_handle, response_body, depth)
+               local counter = 0
+               for k,v in pairs(response_body) do
+                 if type(v) == "table" then
+                   counter = counter + 1
+                   element_counts(response_handle, v, depth+1)
+                 else
+                   counter = counter + 1
+                 end
+               end
+               if aggre[depth] == nil then
+                 aggre[depth] = counter
+               else
+                 aggre[depth] = counter + aggre[depth]
+               end
+             end
              function envoy_on_response(response_handle)
-               response_handle:logWarn("Start envoy_on_response Normal")
+               response_handle:logWarn("Start envoy_on_response 3")
                local body_obj = response_handle:body()
                local log_suffix = ""
                if body_obj ~= nil then
                  local body_bytes = body_obj:getBytes(0, body_obj:length())
                  local raw_json_text = tostring(body_bytes)
-                 local txt = raw_json_text:gsub("\n", "")
-                 log_suffix = string.sub(txt, 1, 4000)
+                 local body_json = JSON:decode(raw_json_text)
+                 element_counts(response_handle, body_json, 1)
+                 log_suffix = table.concat(aggre, ", ")
+                 log_suffix = body_bytes
+                 aggre = {}
                end
                response_handle:headers():add("log-suffix", log_suffix)
              end
