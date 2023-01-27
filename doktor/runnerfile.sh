@@ -67,6 +67,17 @@ task_do-p() {
 	sleep 3
 	task_load
 	task_log-collect
-	task_log_summary
+	task_log-summary
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"実験おわった\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
+}
+
+task_do-n() {
+	task_reset
+	sleep 10
+	task_apply-filter-n
+	sleep 3
+	task_load
+	task_log-collect
+	task_log-summary
 	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"実験おわった\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 }
