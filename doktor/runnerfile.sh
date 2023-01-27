@@ -96,6 +96,7 @@ task_latency-summary() {
 	log_files=$(find . -wholename "./logs-*/load-*.log")
 	for lf in $log_files
 	do
+		echo "Latency Summary: $lf"
 		basedir=$(echo $lf | cut -f2 -d/)
 		cat $lf | sort -k 4,5 | datamash -g 4 median 5 count 5 > $basedir/summary.log
 	done
