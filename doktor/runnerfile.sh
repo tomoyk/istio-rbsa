@@ -61,6 +61,7 @@ task_apply-filter-n() {
 }
 
 task_do-p() {
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"p実験はじめ\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 	task_reset
 	sleep 10
 	task_apply-filter-p
@@ -68,10 +69,12 @@ task_do-p() {
 	task_load
 	task_log-collect
 	task_log-summary
-	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"実験おわった\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"p実験おわり\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 }
 
 task_do-n() {
+	task_log-summary
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"n実験はじめ\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 	task_reset
 	sleep 10
 	task_apply-filter-n
@@ -79,5 +82,5 @@ task_do-n() {
 	task_load
 	task_log-collect
 	task_log-summary
-	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"実験おわった\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"n実験おわり\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 }
