@@ -1,0 +1,47 @@
+[2023-01-26T09:36:15.751Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 16 - "-" "Python/3.9 aiohttp/3.8.3" "67cce7dd-008b-4cd6-9f92-fdc3902d4a7c" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:48495 10.42.0.126:8000 10.42.0.125:37032 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:15.819Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 30 - "-" "Python/3.9 aiohttp/3.8.3" "67cce7dd-008b-4cd6-9f92-fdc3902d4a7c" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:41167 10.42.0.126:8000 10.42.0.125:37042 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:15.903Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 25 - "-" "Python/3.9 aiohttp/3.8.3" "9108667b-972c-4f1e-a8c4-ad7826e07cbd" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:59713 10.42.0.126:8000 10.42.0.125:37054 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:15.972Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 33 - "-" "Python/3.9 aiohttp/3.8.3" "9108667b-972c-4f1e-a8c4-ad7826e07cbd" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:48377 10.42.0.126:8000 10.42.0.125:37070 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.098Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 17 - "-" "Python/3.9 aiohttp/3.8.3" "9108667b-972c-4f1e-a8c4-ad7826e07cbd" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:37121 10.42.0.126:8000 10.42.0.125:37072 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.168Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 34 - "-" "Python/3.9 aiohttp/3.8.3" "7966c60b-2a80-48d3-a130-f50a52640cf7" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:52461 10.42.0.126:8000 10.42.0.125:37088 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.231Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 26 - "-" "Python/3.9 aiohttp/3.8.3" "7966c60b-2a80-48d3-a130-f50a52640cf7" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:57119 10.42.0.126:8000 10.42.0.125:37094 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.303Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 32 - "-" "Python/3.9 aiohttp/3.8.3" "7966c60b-2a80-48d3-a130-f50a52640cf7" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:40999 10.42.0.126:8000 10.42.0.125:37110 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.381Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 12 - "-" "Python/3.9 aiohttp/3.8.3" "d6bd2957-50e7-4b50-9aea-d7bca34e1ab2" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:45043 10.42.0.126:8000 10.42.0.125:37120 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.474Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 21 - "-" "Python/3.9 aiohttp/3.8.3" "d6bd2957-50e7-4b50-9aea-d7bca34e1ab2" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:33333 10.42.0.126:8000 10.42.0.125:37126 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+[2023-01-26T09:36:16.551Z] "GET /paper HTTP/1.1" 0 DC downstream_remote_disconnect - "-" 0 0 14 - "-" "Python/3.9 aiohttp/3.8.3" "d6bd2957-50e7-4b50-9aea-d7bca34e1ab2" "paper-app.paper:4000" "10.42.0.126:8000" inbound|8000|| 127.0.0.6:40781 10.42.0.126:8000 10.42.0.125:37138 outbound_.4000_._.paper-app.paper.svc.cluster.local default -
+2023-01-26T09:57:29.242788Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T10:29:42.450913Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+[2023-01-26T09:12:57.266Z] "- - -" 0 - - - "-" 1575257 181740117 4997871 - "-" "-" "-" "-" "10.42.0.91:27017" outbound|27017||paper-mongo.paper.svc.cluster.local 10.42.0.126:41244 10.43.46.105:27017 10.42.0.126:47298 - - -
+[2023-01-26T09:09:31.787Z] "- - -" 0 - - - "-" 2487299 286899735 5204790 - "-" "-" "-" "-" "10.42.0.91:27017" outbound|27017||paper-mongo.paper.svc.cluster.local 10.42.0.126:59926 10.43.46.105:27017 10.42.0.126:49110 - - -
+2023-01-26T10:58:13.920113Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+[2023-01-26T09:09:27.544Z] "- - -" 0 - - - "-" 2169057 246839777 8221538 - "-" "-" "-" "-" "10.42.0.91:27017" outbound|27017||paper-mongo.paper.svc.cluster.local 10.42.0.126:37026 10.43.46.105:27017 10.42.0.126:37808 - - -
+2023-01-26T11:31:18.222353Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T12:03:58.479012Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T12:35:31.852301Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T13:07:10.925897Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T13:39:34.372096Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T14:12:21.172078Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T14:44:22.464403Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T15:16:51.130097Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T15:49:01.398461Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T16:18:17.690456Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T16:50:36.432687Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T17:19:30.640702Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T17:50:26.484772Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T18:20:41.574487Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T18:50:05.117158Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T19:21:43.075610Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T19:53:43.350324Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T20:26:45.348486Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T20:55:05.746358Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T20:59:25.315652Z	info	ads	XDS: Incremental Pushing:0 ConnectedEndpoints:2 Version:
+2023-01-26T20:59:25.538422Z	info	cache	generated new workload certificate	latency=221.853654ms ttl=23h59m59.461596894s
+2023-01-26T21:23:07.253278Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T21:54:19.462060Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T22:24:57.650171Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T22:53:38.613946Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T23:20:59.729011Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-26T23:54:00.177551Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-27T00:24:16.685456Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-27T00:51:30.076856Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012
+2023-01-27T01:24:08.115175Z	info	xdsproxy	connected to upstream XDS server: istiod.istio-system.svc:15012

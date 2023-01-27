@@ -39,6 +39,15 @@ task_collect() {
 	done
 }
 
+task_summary() {
+	log_files=$(find . -wholename "./logs-*/*.log")
+	for lf in $log_files
+	do
+		echo "Summary: $lf"
+		grep "^\[2023" $lf > ${lf}2
+	done
+}
+
 task_load() {
 	cd load-access
 	./loader.sh
