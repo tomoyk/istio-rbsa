@@ -3,7 +3,7 @@
 cd `dirname $0`
 
 timestamp=$(date "+%Y-%m-%d-%H-%M-%S")
-filename="load-${timestamp}.log"
+filename="../load-${timestamp}.log"
 touch $filename
 
 counter=0
