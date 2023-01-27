@@ -27,7 +27,7 @@ task_reset() {
 	done
 }
 
-task_collect() {
+task_log-collect() {
 	timestamp=$(date "+%Y-%m-%d-%H-%M-%S")
 	list="front paper author fulltext thumbnail stats"
 	mkdir logs-$timestamp
@@ -39,7 +39,7 @@ task_collect() {
 	done
 }
 
-task_summary() {
+task_log-summary() {
 	log_files=$(find . -wholename "./logs-*/*.log")
 	for lf in $log_files
 	do
@@ -50,4 +50,23 @@ task_summary() {
 
 task_load() {
 	./load-access/loader.sh
+}
+
+task_apply-filter-p() {
+	./filter-deploy.sh proposal
+}
+
+task_apply-filter-n() {
+	./filter-deploy.sh normal
+}
+
+task_do-p() {
+	task_reset
+	sleep 10
+	task_apply-filter-p
+	sleep 3
+	task_load
+	task_log-collect
+	task_log_summary
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"実験おわった\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 }
