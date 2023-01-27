@@ -91,3 +91,12 @@ task_do-n() {
 	task_log-summary
 	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"n実験おわり\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 }
+
+task_latency-summary() {
+	log_files=$(find . -wholename "./logs-*/load-*.log")
+	for lf in $log_files
+	do
+		basedir=$(echo $lf | cut -f2 -d/)
+		cat $lf | sort -k 4,5 | datamash -g 4 median 5 count 5 > $basedir/summary.log
+	done
+}
