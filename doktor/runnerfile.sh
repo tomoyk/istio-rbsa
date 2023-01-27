@@ -49,7 +49,5 @@ task_summary() {
 }
 
 task_load() {
-	cd load-access
-	./loader.sh
-	cd ..
+	./load-access/loader.sh
 }
