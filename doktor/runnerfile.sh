@@ -101,3 +101,14 @@ task_latency-summary() {
 		cat $lf | sort -k 4,5 | datamash -g 4 median 5 count 5 > $basedir/summary.log
 	done
 }
+
+task_log-length-summary() {
+	log_files=$(find . -wholename "./logs-*/*front.log2")
+	for lf in $log_files
+	do
+		dirname=$(echo $lf | cut -f2 -d/)
+		echo "length summary: $lf"
+		cat $lf | awk '{print length($0)}' | datamash min 1 q1 1 median 1 q3 1 max 1 > $dirname/summary.log-length
+		cat $lf | awk '{print length($0)}' | sort -n | datamash -g 1 count 1 > $dirname/summary.log-length-count
+	done
+}
