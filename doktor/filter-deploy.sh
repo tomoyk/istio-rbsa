@@ -7,6 +7,9 @@ case "$1" in
     "normal")
         filter_file="template-envoy-filter.yml"
         ;;
+    "empty")
+        filter_file="template-envoy-filter-empty.yml"
+	;;
     *)
         exit 1
         ;;

@@ -31,6 +31,7 @@ task_log-collect() {
 	case $1 in
 		"p") overview="proposal" ;;
 		"n") overview="normal" ;;
+		"e") overview="empty" ;;
 		* ) overview="error" ;;
 	esac
 	timestamp=$(date "+%Y-%m-%d-%H-%M-%S")
@@ -64,6 +65,23 @@ task_apply-filter-p() {
 
 task_apply-filter-n() {
 	./filter-deploy.sh normal
+}
+
+task_apply-filter-e() {
+	./filter-deploy.sh empty
+}
+
+task_do-e() {
+	typename='empty'
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"e実験はじめ\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
+	task_reset
+	sleep 10
+        task_apply-filter-e
+	sleep 3
+	task_load
+	task_log-collect e
+	task_log-summary
+	curl -X POST --data-urlencode "payload={\"channel\": \"#times-koyama\", \"username\": \"experiment-notice\", \"text\": \"e実験おわり\", \"icon_emoji\": \":ghost:\"}" $(cat .slack-webhook)
 }
 
 task_do-p() {
