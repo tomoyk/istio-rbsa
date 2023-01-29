@@ -1,5 +1,7 @@
 # generate url-patterns
 
+Kibanaでクエリ発行して結果をCSVでダンプした．
+
 awk '{print $6" "$7}' < raw-front-logs.csv | cut -c3- > url-patterns.txt
 
 sed 's/^"//g' raw-front-logs.csv | awk -F, '{print $1}' | sort -n | uniq -c | sort -n -k3
