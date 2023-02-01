@@ -1,10 +1,10 @@
-# n1 = "logs-2023-01-27-05-44-46-n/raw-length1"
+n1 = "logs-2023-01-27-05-44-46-n/raw-length1-average"
 e1 = "logs-2023-01-28-03-23-22-e/raw-length1-average"
-p1 = "logs-2023-01-27-05-25-12-p/raw-length1-average"
+# p1 = "logs-2023-01-27-05-25-12-p/raw-length1-average"
 
 with open(e1) as fe:
     e = fe.read().splitlines()
-with open(p1) as fp:
+with open(n1) as fp:
     p = fp.read().splitlines()
 
 
@@ -24,4 +24,7 @@ for x in p:
 # print(len(diff_e), len(diff_p))
 
 for x in diff_p.keys():
-    print(x + "\t" + str(float(diff_p[x]) - float(diff_e[x])))
+    try:
+        print(x + "\t" + str(float(diff_p[x]) - float(diff_e[x])))
+    except Exception:
+        continue
