@@ -130,3 +130,14 @@ task_log-length-summary() {
 		cat $lf | awk '{print length($0)}' | sort -n | datamash -g 1 count 1 > $dirname/summary.log-length-count
 	done
 }
+
+task_length-response-summary() {
+	log_files=$(find . -wholename "./logs-*/2023*.log2")
+	for lf in $log_files
+	do
+		dirname=$(echo $lf | cut -f2 -d/)
+		echo $lf
+		echo -e "#bytes\t#duration" > $dirname/summary.length-response
+		awk '{print $11"\t"$12}' < $lf >> $dirname/summary.length-response
+	done
+}
