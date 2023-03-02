@@ -1,1 +1,0 @@
-awk '{print $3}' < out.a | datamash mean 1 > average-length-increase
