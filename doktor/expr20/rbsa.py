@@ -38,12 +38,20 @@ def main():
     print("Open:", args.filename)
     with open(args.filename) as f:
         body = json.load(f)
+
     element_counts(body, 1)
+
     print("aggre:", aggre)
     sort_aggre = dict(sorted(aggre.items(), key=lambda x: x[0]))
     print("sort_aggre:", sort_aggre)
     rbsi = ", ".join(map(str, sort_aggre.values()))
     print(rbsi)
+
+    basename = args.filename.split("/")[-1]
+    write_filename = "rbsi." + basename + ".result"
+    result_filename = args.filename.replace(basename, write_filename)
+    with open(result_filename, mode="w") as f:
+        f.write(rbsi + "\n")
 
 
 if __name__ == "__main__":

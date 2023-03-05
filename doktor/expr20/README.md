@@ -14,3 +14,16 @@
 - 正常なケースを3つ用意する．
 - 正常なケースから異常なケースを用意する．
 - ケースの管理はMarkdownかスプレッドシート，ファイル分割したtxt？
+
+## メモ jsonbinpack
+
+```
+# Encoding file create
+./node_modules/.bin/jsonbinpack compile fulltext-openapi.json > _encoding.json
+
+# Binpacked file create
+./node_modules/.bin/jsonbinpack serialize _encoding.json response_collects/fulltext-Wi-Fi.txt > _output.bin
+
+# Binpacked file unpack
+./node_modules/.bin/jsonbinpack deserialize _encoding.json _output.bin
+```
