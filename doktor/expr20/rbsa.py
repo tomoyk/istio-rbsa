@@ -48,7 +48,7 @@ def main():
     print(rbsi)
 
     basename = args.filename.split("/")[-1]
-    write_filename = "rbsi." + basename + ".result"
+    write_filename = "rbsi." + basename.replace(".txt", "") + ".result"
     result_filename = args.filename.replace(basename, write_filename)
     with open(result_filename, mode="w") as f:
         f.write(rbsi + "\n")
