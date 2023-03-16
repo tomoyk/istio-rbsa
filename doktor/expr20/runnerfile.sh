@@ -12,7 +12,7 @@ task_jbp() {
         > result_jsonbinpack/_encoding.json
 
     # Binpacked file create
-    for fname in $(ls response_collects)
+    for fname in $(ls response_collects | grep txt)
     do
         newfname=$(echo $fname | sed 's/.txt$/.result/g')
         # echo $newfname
@@ -25,9 +25,16 @@ task_jbp() {
 
 # bson
 task_bson() {
-    for fname in $(ls response_collects)
+    for fname in $(ls response_collects/ | grep txt)
     do
         newfname=$(echo $fname | sed 's/.txt$/.result/g')
         json2bson "response_collects/$fname" "result_bson/bson.$newfname"
+    done
+}
+
+task_rbsi() {
+    for i in $(ls response_collects/*.txt)
+    do
+        python rbsa.py $i
     done
 }
