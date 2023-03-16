@@ -1,0 +1,15 @@
+21	bson.fulltext-Kubernetes.result
+21	bson.fulltext-recall.result
+47065	bson.fulltext-Wi-Fi.result
+44179	bson.fulltext-iot.result
+21	bson.fulltext-Sigfox.result
+12	bin.fulltext-Kubernetes.result
+12	bin.fulltext-recall.result
+12	bin.fulltext-Sigfox.result
+23323	bin.fulltext-Wi-Fi.result
+21912	bin.fulltext-iot.result
+2	rbsi.fulltext-recall.result
+2	rbsi.fulltext-Kubernetes.result
+10	rbsi.fulltext-Wi-Fi.result
+2	rbsi.fulltext-Sigfox.result
+10	rbsi.fulltext-iot.result

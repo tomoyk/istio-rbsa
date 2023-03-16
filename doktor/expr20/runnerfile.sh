@@ -1,5 +1,9 @@
 #!/bin/bash
 
+task_default() {
+    runner -l
+}
+
 # jsonbinpack
 task_jbp() {
     # Encoding file create
@@ -19,11 +23,11 @@ task_jbp() {
     done
 }
 
-# ubjson
-task_ubj() {
+# bson
+task_bson() {
     for fname in $(ls response_collects)
     do
         newfname=$(echo $fname | sed 's/.txt$/.result/g')
-        json2bson "response_collects/$fname" "result_bson/ubj.$newfname"
+        json2bson "response_collects/$fname" "result_bson/bson.$newfname"
     done
 }
