@@ -116,7 +116,7 @@ task_latency-summary() {
 	do
 		echo "Latency Summary: $lf"
 		basedir=$(echo $lf | cut -f2 -d/)
-		cat $lf | sort -k 4,5 | datamash -g 4 median 5 count 5 > $basedir/summary.log
+		cat $lf | sort -k 4,5 | datamash -g 4 median 5 count 5 sum 5 > $basedir/summary.log
 	done
 }
 
