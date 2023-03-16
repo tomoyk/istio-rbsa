@@ -20,4 +20,4 @@ j["fulltexts"] = m
 
 print(json.dumps(m, indent=4, ensure_ascii=False))
 with open(newname, mode='w') as f2:
-    json.dump(m, f2, ensure_ascii=False)
+    json.dump(j, f2, ensure_ascii=False, indent=2)
